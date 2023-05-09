@@ -2,10 +2,16 @@
 {% block title %}<title>Home</title>{% endblock %}
 {% block content %}
     <h1>Freeshelf</h1>
+    <header>
+        {% for category in categories %}
+        <span>| <a href={{ category.get_absolute_url }}>{{ category }}</a> | </span>
+        {% endfor %}
+    </header>
     <h2>Recently added books</h2>
     <ul>
     {% for resource in free_resources %}
     <li><a href="{% url 'details_about_resource' resource.pk %}">{{ resource }}</a></li>
+    <button><a href="{% url 'favorite' resource.pk %}">♥ Favorite</a></button>
     {% endfor %}
     </ul>
     <button><a href="{% url 'add_resource' %}">Add a new resource</a></button>

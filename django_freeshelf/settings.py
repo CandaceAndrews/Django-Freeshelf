@@ -41,7 +41,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "registration",
-    # django registration redux
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

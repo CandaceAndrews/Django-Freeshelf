@@ -8,9 +8,10 @@ from .forms import ResourceForm
 def list_resources(request):
     # free_resources = Resource.objects.all()
     free_resources = Resource.objects.all().order_by('-created_at')
+    categories = Category.objects.all()
     for thing in free_resources:
         print(free_resources)
-    return render(request, 'resources/index.html', {'free_resources': free_resources})
+    return render(request, 'resources/index.html', {'free_resources': free_resources, 'categories': categories})
 
 
 @user_passes_test(lambda user: user.is_staff)
@@ -34,3 +35,9 @@ def resource_category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     resources = Resource.objects.filter(category=category)
     return render(request, 'resources/category.html', {'resources': resources})
+
+
+def favorite_book(request, pk):
+    resource = get_object_or_404(Resource, pk=pk)
+    request.user.favorites.add(resource)
+    return redirect('home')

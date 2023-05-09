@@ -27,4 +27,5 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     # access to django registration redux
     path('category/<slug:slug>', views.resource_category, name="category"),
+    path('book/favorite/<int:pk>', views.favorite_book, name='favorite'),
 ]

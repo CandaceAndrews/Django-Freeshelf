@@ -11,5 +11,11 @@ h2 {
 }
 
 li {
+    padding-top: 25px;
     padding-bottom: 10px;
 }
+
+button {
+    margin: auto;
+}
+
